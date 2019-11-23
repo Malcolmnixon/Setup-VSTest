@@ -77,7 +77,7 @@ async function FindVSTest(pathToVSWhere:string):Promise<string>{
 
   // Run VSWhere to tell us where VSTest.Console is
   var vsWhereExe = path.join(pathToVSWhere, "vswhere.exe");
-  await exec.exec(vsWhereExe, ['-latest', '-requires', 'Microsoft.VisualStudio.Workload.ManagedDesktop', '-find', '**\\vstest.console.exe'], options);
+  await exec.exec(vsWhereExe, ['-latest', '-requires', 'Microsoft.VisualStudio.Workload.ManagedDesktop', '-find', '**\\TestPlatform\\vstest.console.exe'], options);
 
   if(vsTestPath === ""){
     core.setFailed("Unable to find VSTest.Console.exe");
