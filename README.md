@@ -1,5 +1,7 @@
 
-# setup-VSTest
+# Setup-VSTest
+
+NOTE: This is a clone of Setup-MSBuild by Warren Buckley modified to find VSTest.Console.exe rather than MSBuild.exe.
 
 This action sets up VSTest.Console.exe as a CLI tool for use in actions by:
 - optionally downloading and caching a version of VSWhere.exe to help find the latest VSTest.Console on the machine
@@ -32,7 +34,3 @@ jobs:
 # License
 
 The scripts and documentation in this project are released under the [MIT License](LICENSE)
-
-# Contributions
-
-Contributions are welcome!  See [Contributor's Guide](docs/contributors.md)
