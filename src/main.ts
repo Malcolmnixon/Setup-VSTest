@@ -65,7 +65,7 @@ run();
 
 async function FindVSTest(pathToVSWhere:string):Promise<string>{
 
-  var vsTestPath = "";
+  let vsTestPath = "";
 
   const options:ExecOptions = {};
   options.listeners = {
@@ -77,11 +77,13 @@ async function FindVSTest(pathToVSWhere:string):Promise<string>{
 
   // Run VSWhere to tell us where VSTest.Console is
   var vsWhereExe = path.join(pathToVSWhere, "vswhere.exe");
-  await exec.exec(vsWhereExe, ['-latest', '-requires', 'Microsoft.VisualStudio.Workload.ManagedDesktop', '-find', '**\\TestPlatform\\vstest.console.exe'], options);
+  await exec.exec(vsWhereExe, ['-latest', '-products', '*', '-requires', 'Microsoft.VisualStudio.Workload.ManagedDesktop', 'Microsoft.VisualStudio.Workload.Web', '-requiresAny', '-property', 'installationPath'], options);
 
   if(vsTestPath === ""){
     core.setFailed("Unable to find VSTest.Console.exe");
   }
+
+  vsTestPath = path.join(vsTestPath.trimRight(), '\\Common7\\IDE\\CommonExtensions\\Microsoft\\TestWindow\\vstest.console.exe')
 
   var folderForVSTest = path.dirname(vsTestPath)
   core.debug(`VSTest = ${vsTestPath}`);
