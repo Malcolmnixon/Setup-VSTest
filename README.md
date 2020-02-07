@@ -1,3 +1,4 @@
+[![Actions Status](https://github.com/Malcolmnixon/Setup-VSTest-Test/workflows/framework-windows/badge.svg)](https://github.com/Malcolmnixon/Setup-VSTest-Test/actions)
 
 # Setup-VSTest
 
