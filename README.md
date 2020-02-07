@@ -8,26 +8,45 @@ This action sets up VSTest.Console.exe as a CLI tool for use in actions by:
 - Adds the location of the VSTest.Console to the PATH
 
 
+# Example Project
+The [Setup-VSTest-Test](https://github.com/Malcolmnixon/Setup-VSTest-Test) project is a simple demo showing:
+ - Restoring a project using Nuget
+ - Building a project using MSBuild
+ - Testing a project using VSTest
+ 
 # Usage
 
 Basic:
 ```yaml
-steps:
-name: ASP.NET CI
+name: example-net-framework-build
+
 on: [push]
+
 jobs:
   build:
+
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v1
+      
+    - name: Setup Nuget.exe
+      uses: warrenbuckley/Setup-Nuget@v1
 
-    - name: Setup VSTest.Console.exe
-      uses: malcolmnixon/Setup-VSTest@master
+    - name: Nuget restore
+      run: nuget restore TestProject.sln
+      
+    - name: Setup MSBuild.exe
+      uses: warrenbuckley/Setup-MSBuild@v1
 
-    - name: VSTest.Console
-      working-directory: src
-      run: vstest.console MyProject.dll
+    - name: MSBuild
+      run: msbuild TestProject.sln
+      
+    - name: Setup VSTest.exe
+      uses: Malcolmnixon/Setup-VSTest@v2
+
+    - name: VSTest
+      run: vstest.console ClassLibrary.Test\bin\Debug\ClassLibrary.Test.dll
 ```
 
 
