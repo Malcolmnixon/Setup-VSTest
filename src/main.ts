@@ -83,7 +83,7 @@ async function FindVSTest(pathToVSWhere:string):Promise<string>{
     core.setFailed("Unable to find VSTest.Console.exe");
   }
 
-  vsTestPath = path.join(vsTestPath.trimRight(), '\\Common7\\IDE\\CommonExtensions\\Microsoft\\TestWindow\\vstest.console.exe')
+  vsTestPath = path.join(vsTestPath.trimRight(), '\\Common7\\IDE\\Extensions\\TestPlatform\\vstest.console.exe')
 
   var folderForVSTest = path.dirname(vsTestPath)
   core.debug(`VSTest = ${vsTestPath}`);
