@@ -44,7 +44,7 @@ jobs:
       run: msbuild TestProject.sln
       
     - name: Setup VSTest.exe
-      uses: Malcolmnixon/Setup-VSTest@v2
+      uses: Malcolmnixon/Setup-VSTest@v3
 
     - name: VSTest
       run: vstest.console ClassLibrary.Test\bin\Debug\ClassLibrary.Test.dll
