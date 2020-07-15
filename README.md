@@ -14,7 +14,7 @@ The [Setup-VSTest-Test](https://github.com/Malcolmnixon/Setup-VSTest-Test) proje
  - Restoring a project using Nuget
  - Building a project using MSBuild
  - Testing a project using VSTest
- 
+
 # Usage
 
 Basic:
